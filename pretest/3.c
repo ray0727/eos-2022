@@ -45,4 +45,7 @@ int main(){
             printf("\n");
         }
     }
+    free(path);
+    free(length);
+    free(ans);
 }
