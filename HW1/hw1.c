@@ -237,6 +237,14 @@ void pick_meal(int fd){
                 }
             }
             else if(choose_meal=='3'){
+                if(atoi(result)==0){
+                    state = 0;
+                    printf("No meal\n");
+                    ioctl(fd, LCD_IOCTL_CLEAR, NULL);
+                    display.Count = sprintf((char *) display.Msg, "1.shop list\n2.order");
+                    ioctl(fd, LCD_IOCTL_WRITE, &display);
+                    break;
+                }
                 printf("Total: %d\n", total_price);
                 ioctl(fd, LCD_IOCTL_CLEAR, NULL);
                 display.Count = sprintf((char *) display.Msg, "Please wait for few minutes\n");
