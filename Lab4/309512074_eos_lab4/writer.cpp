@@ -23,11 +23,13 @@ int main(int argc, char const *argv[])
 
     int i, ret;
     char digit;
-    for(i=0;i<strlen(argv[1]);i++){
-        digit = argv[1][i];
-        ret = write(fd,&digit,1);
-        printf("%c\n",digit);
-        sleep(1);
+    while(1){
+        for(i=0;i<strlen(argv[1]);i++){
+            digit = argv[1][i];
+            ret = write(fd,&digit,1);
+            printf("%c\n",digit);
+            sleep(1);
+        }
     }
 
     return 0;
