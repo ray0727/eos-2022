@@ -103,9 +103,14 @@ void *process(void *t)
     while(1)
     {
         memset(rcv,'\0',sizeof(rcv));
-        if((n = read(connfd, rcv, BUFSIZE)) == -1){
-            printf("Error: read()\n");
-            exit(-1);
+        while(1){
+            if((n = read(connfd, rcv, BUFSIZE)) == -1){
+                printf("Error: read()\n");
+                exit(-1);
+            }
+            if(strcmp(rcv,"")!=0){
+                break;
+            }
         }
         strcpy(op, rcv);
         p = strtok(op, delim);
